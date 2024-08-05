@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DA QUIZ</title>
+</head>
+<style>
+		h1{
+			text-align: center;
+			font-size: 35px;
+			color: white;
+		}
+
+		h1:hover {
+			color: aqua;
+			text-shadow: 2px 3px black;
+
+	}
+
+		h2 {
+			text-align: center;
+			font-size: 15px;
+			color: white;
+
+		}
+
+		h3 {
+			text-align: center; 
+			font-size: 70px;
+			
+	} 
+
+		body {
+		background: linear-gradient(to bottom, #ff6600 0%, #800000 100%);
+		background-attachment:  fixed;
+		background-repeat: no-repeat;
+		}
+
+		#btn {
+		width: 500px;
+		height: 200px;
+		font-size: 75px;
+		background-color: goldenrod;
+		display: block; 
+		margin: auto; 
+	}
+
+		#btn2 {
+		width: 500px;
+		height: 200px;
+		font-size: 75px;
+		background-color: goldenrod;
+		display: block; 
+		margin: auto;  
+	} 
+	
+</style>
+<body>
+	<h1>Random Quiz</h1> 
+	<h2>If you get 2 out of 3 questions correct you pass the quiz.</h2>
+	<h2 id="pie"></h2>
+	<h3 id="pizza"></h3>
+	<h3 id="pizzapop"></h3>
+	<br><br><br><br><br> 
+    
+	<form>
+		<button id="btn" onClick="insertName()">START 1</button> 
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<button id="btn2" onClick="Quiz()">START 2</button>
+	</form>
+</body>
+
+</html>
+<script>
+	var start = document.getElementById("btn"); 
+	start.style.visibility = "visible"; 
+	var start2 = document.getElementById("btn2"); 
+	start2.style.visibility = "hidden";
+	start.addEventListener("click", insertName, false);
+	start2.addEventListener("click", Quiz, false); 
+	var text; 
+	
+//main algorithm 	
+function insertName(e) 
+	{ 
+		
+		e.preventDefault(); 
+  var person = prompt("Please enter your name", "Enter a name here"); 
+	 
+  
+	if (person != null) 
+	{ 
+		
+    document.getElementById("pie").innerHTML = "Hello " + person + "! Let's begin our Quiz!"; 
+	alert("Hello " + person + "! Let's begin our quiz!") 
+	btn.disabled = true; 
+	btn2.disabled = false; 
+    start.style.display = "none";  
+	quiz(); 
+	 
+	} 
+
+//secondary algorithm and abstraction 		
+function quiz() { 
+		
+		
+		
+var questions = [
+     {
+           prompt: "A man buys a new car and goes home to tell his girlfriend. He goes the wrong way up a one way street, bumps into seven people, goes on the pavement and takes a shortcut through a public park. He is seen by a policeman but is not arrested. Why?\n(a) He is walking\n\(b) The policeman didn't care\n(c) The car was a toy car",
+           answer: "a"
+     },
+     {
+          prompt: "How can a man go eight days without sleep? ?\n(a) Drinking coffee and energy drinks\n\(b) The man is not human\n(c) By sleeping at night",
+          answer: "c"
+     },
+     {
+          prompt: "Imagine you are in a sinking rowboat surrounded by sharks. How would you survive? \n(a) Call for help and hope someone sees you\n\(b) Hunt down the sharks\n(c) Stop imagining. It's not real",
+          answer: "c"
+     }
+];
+var score = 0;
+
+for(var i = 0; i < questions.length; i++){
+     var response = window.prompt(questions[i].prompt);
+     if(response == questions[i].answer){
+          score++;
+          alert("Correct! Keep up the good work! Score: " + score);
+     } else {
+          alert("INCORRECT! THINK ABOUT THE QUESTION MORE AND DO BETTER!");
+     }
+}
+alert("you got " + score + "/" + questions.length); 
+
+if(score >= 2){ 
+	alert("CONGRATS! YOU HAVE PASSED THE QUIZ! YOU'RE SUCH AS SMART PERSON!")
+	document.getElementById("pizza").innerHTML = "CONGRATS! YOU HAVE PASSED THE QUIZ! YOU'RE SUCH AS SMART PERSON!"; 
+	pizza.style.color = "green"; 
+	pizzapop.style.display = "none"; 
+}  
+if(score < 2){
+	alert("YOU HAVE FAILED THE QUIZ. TRY AGAIN AND DO BETTER NEXT TIME!")
+}	document.getElementById("pizzapop").innerHTML = "YOU HAVE FAILED THE QUIZ. TRY AGAIN AND DO BETTER NEXT TIME!";  
+	pizzapop.style.color = "red";
+	  
+
+	
+}
+
+	
+
+} 
+	
+
+
+
+
+
+</script>
